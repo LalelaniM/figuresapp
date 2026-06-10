@@ -1,0 +1,35 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Shoe Inventory Search</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="container">
+  <h1>Shoe Inventory Search</h1>
+
+  <div class="selector">
+    <label>Select Inventory:</label>
+    <select id="inventoryType">
+      <option value="storeroom.xlsx">Storeroom</option>
+      <option value="retail.xlsx">Retail</option>
+    </select>
+  </div>
+
+  <div class="search-box">
+    <input type="text" id="searchInput" placeholder="Enter Shoe Code">
+    <button onclick="searchInventory()">Search</button>
+  </div>
+
+  <div id="results"></div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/xlsx/dist/xlsx.full.min.js"></script>
+<script src="script.js"></script>
+
+</body>
+</html>
