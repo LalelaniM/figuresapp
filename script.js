@@ -26,7 +26,7 @@ async function calculateAndShow() {
 
   const PercentageToTarget = ((sales / target) * 100).toFixed(1);
   const ConversionRate = ((trans / traffic) * 100).toFixed(1);
-  const mPercentageToTarget = ((mtd / mtdstarget) * 100).toFixed(1);
+  const mPercentageToTarget = ((mtdstarget / mtd) * 100).toFixed(1);
   const projections = ((mtd / day) * 30).toFixed(2);
 
   const msg = `Good evening team<br><br>
