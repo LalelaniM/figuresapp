@@ -6,30 +6,89 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Shoe Inventory Search</title>
   <link rel="stylesheet" href="style.css">
+  <script src="script.js"></script>
 </head>
 <body>
+<!-- NEW PROJECT -->
+ 
+<!-- The Selector Dropdown at the top 
+<div class="selector-container">
+  <label for="page-chooser">Choose figures: </label>
+  <select id="page-chooser">
+    <option value="daily">Daily Figures</option>
+    <option value="closing">Closing Figures</option>
+  </select>
+</div> -->
 
-<div class="container">
-  <h1>Shoe Inventory Search</h1>
 
-  <div class="selector">
-    <label>Select Inventory:</label>
-    <select id="inventoryType">
-      <option value="retail.xlsx">Retail</option>
-      <option value="storeroom.xlsx">Storeroom</option>
-    </select>
-  </div>
 
-  <div class="search-box">
-    <input type="text" id="searchInput" placeholder="Enter Shoe Code">
-    <button onclick="searchInventory()">Search</button>
-  </div>
+  <div>
+  <div class="container">
+    <h1>Figures</h1>
 
-  <div id="results"></div>
+    <div class="input-row">
+        <label>Day Of The Month:</label>
+        <input type="number" id="day" placeholder="Enter day">
+    </div>
+
+    <div class="input-row">
+        <label>Actual Sales:</label>
+        <input type="number" id="sales" placeholder="Enter sales">
+    </div>
+
+    <div class="input-row">
+        <label>Target:</label>
+        <input type="number" id="target" placeholder="Enter today's target">
+    </div>
+
+    <div class="input-row">
+        <label>Transactions:</label>
+        <input type="number" id="transactions" placeholder="Enter transactions">
+    </div>
+
+    <div class="input-row">
+        <label>Units Sold:</label>
+        <input type="number" id="units" placeholder="Enter units sold">
+    </div>
+
+    <div class="input-row">
+        <label>Foot Traffic:</label>
+        <input type="number" id="traffic" placeholder="Enter foot traffic">
+    </div>
+
+    <div class="input-row">
+        <label>AVT:</label>
+        <input type="number" id="avt" placeholder="Enter AVT">
+    </div>
+
+    <div class="input-row">
+        <label>UPT:</label>
+        <input type="number" id="upt" placeholder="Enter UPT">
+    </div>
+
+    <div class="input-row">
+        <label>MTD:</label>
+        <input type="number" id="mtd" placeholder="Enter MTD">
+    </div>
+
+    <div class="input-row">
+        <label>MTD's Target:</label>
+        <input type="number" id="mtdstarget" placeholder="Enter MTD target">
+    </div>
+
+    <button onclick="calculateAndShow()">Submit</button>
 </div>
 
-<script src="https://cdn.jsdelivr.net/npm/xlsx/dist/xlsx.full.min.js"></script>
-<script src="script.js"></script>
+</div>
+
+<!--MESSAGE-->
+<div>
+  <div class="container">
+    <h2>Message</h2>
+    <p id="messagetext"></p>
+  </div>
+</div>
+
 
 </body>
 </html>

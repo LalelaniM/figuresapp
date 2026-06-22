@@ -1,76 +1,59 @@
 
-async function loadExcelFile(fileName) {
+async function calculateAndShow() {
 
-  const response = await fetch(fileName);
+  
+  const day = document.getElementById('day').value;
+  const sales = document.getElementById('sales').value;
+  const target = document.getElementById('target').value;
+  const trans = document.getElementById('transactions').value;
+  const units = document.getElementById('units').value;
+  const traffic = document.getElementById('traffic').value;
+  const avt = document.getElementById('avt').value;
+  const upt = document.getElementById('upt').value;
+  const mtd = document.getElementById('mtd').value;
+  const mtdstarget = document.getElementById('mtdstarget').value;
+  const mtarget = 1400000; // Monthly target value
 
-  const arrayBuffer = await response.arrayBuffer();
+  const messageDiv = document.getElementById('message');
 
-  const workbook = XLSX.read(arrayBuffer, { type: 'array' });
+  let varFromTarget = "";
+  const targetCalc = target - sales;
+  if (targetCalc < 0) {
+    varFromTarget = `+R${Math.abs(targetCalc).toFixed(2)}`;
+  } else{
+      varFromTarget = `- R${Math.abs(targetCalc).toFixed(2)}`;
+    }
 
-  const sheetName = workbook.SheetNames[0];
+  const PercentageToTarget = ((sales / target) * 100).toFixed(1);
+  const ConversionRate = ((trans / traffic) * 100).toFixed(1);
+  const mPercentageToTarget = ((mtd / mtdstarget) * 100).toFixed(1);
+  const projections = ((mtd / day) * 30).toFixed(2);
 
-  const worksheet = workbook.Sheets[sheetName];
+  const msg = `Good evening team<br><br>
+  Please see below our closing sales update.<br><br>
+  ${day}/06/2026<br><br>
+  *Figures* 8pm<br><br>
+  *Monthly Target*- R1 400 000<br>
+  *Actual*: R${sales}<br>
+  *Target:* R${target}<br>
+  *Var to Target:* ${varFromTarget}<br>
+  *Percentage To:* ${PercentageToTarget}%<br>
+  ################<br>
+  *Trans:* ${trans}<br>
+  *Units Sold:* ${units}<br>
+  *Foot Traffic:* ${traffic} EST<br>
+  *Conversion:* ${ConversionRate}%<br>
+  *AVT:* R${avt}<br>
+  *UPT:* ${upt}<br>
+  ################<br><br>
+  *MTD:* R${mtd}<br>
+  *MTDs Target:* R${mtdstarget}<br>
+  *Percentage to Target* ${mPercentageToTarget}%<br>
+  *Projections:* R${projections}<br>
+  #################`;
+  
 
-  return XLSX.utils.sheet_to_json(worksheet);
-}
 
-async function searchInventory() {
+  document.getElementById('messagetext').innerHTML = `${msg}`;
 
-  const inventoryType = document.getElementById('inventoryType').value;
-
-  const searchText = document
-    .getElementById('searchInput')
-    .value
-    .toLowerCase()
-    .trim();
-
-  const resultsDiv = document.getElementById('results');
-
-  if (searchText === '') {
-    resultsDiv.innerHTML = '<p>Please enter a shoe code.</p>';
-    return;
-  }
-
-  const inventoryData = await loadExcelFile(inventoryType);
-
-  const filteredResults = inventoryData.filter(row => {
-
-    return Object.values(row).some(value => {
-
-      return String(value)
-        .toLowerCase()
-        .includes(searchText);
-
-    });
-
-  });
-
-  if (filteredResults.length === 0) {
-    resultsDiv.innerHTML = '<p>No matching shoe codes found.</p>';
-    return;
-  }
-
-  let table = '<table><thead><tr>';
-
-  Object.keys(filteredResults[0]).forEach(key => {
-    table += `<th>${key}</th>`;
-  });
-
-  table += '</tr></thead><tbody>';
-
-  filteredResults.forEach(row => {
-
-    table += '<tr>';
-
-    Object.values(row).forEach(value => {
-      table += `<td>${value}</td>`;
-    });
-
-    table += '</tr>';
-
-  });
-
-  table += '</tbody></table>';
-
-  resultsDiv.innerHTML = table;
 }
