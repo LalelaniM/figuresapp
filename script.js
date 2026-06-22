@@ -29,31 +29,47 @@ async function calculateAndShow() {
   const mPercentageToTarget = ((mtdstarget / mtd) * 100).toFixed(1);
   const projections = ((mtd / day) * 30).toFixed(2);
 
+  function formatNumber(num) {
+    return new Intl.NumberFormat('en-US').format(num).replace(/,/g, ' ');
+}
+
+
   const msg = `Good evening team<br><br>
   Please see below our closing sales update.<br><br>
   ${day}/06/2026<br><br>
   *Figures* 8pm<br><br>
   *Monthly Target*- R1 400 000<br>
-  *Actual*: R${sales}<br>
-  *Target:* R${target}<br>
-  *Var to Target:* ${varFromTarget}<br>
+  *Actual*: R${formatNumber(sales)}<br>
+  *Target:* R${formatNumber(target)}<br>
+  *Var to Target:* ${(varFromTarget)}<br>
   *Percentage To:* ${PercentageToTarget}%<br>
   ################<br>
   *Trans:* ${trans}<br>
   *Units Sold:* ${units}<br>
   *Foot Traffic:* ${traffic} EST<br>
   *Conversion:* ${ConversionRate}%<br>
-  *AVT:* R${avt}<br>
-  *UPT:* ${upt}<br>
+  *AVT:* R${formatNumber(avt)}<br>
+  *UPT:* ${formatNumber(upt)}<br>
   ################<br><br>
-  *MTD:* R${mtd}<br>
-  *MTDs Target:* R${mtdstarget}<br>
+  *MTD:* R${formatNumber(mtd)}<br>
+  *MTDs Target:* R${formatNumber(mtdstarget)}<br>
   *Percentage to Target* ${mPercentageToTarget}%<br>
-  *Projections:* R${projections}<br>
+  *Projections:* R${formatNumber(projections)}<br>
   #################`;
   
 
 
   document.getElementById('messagetext').innerHTML = `${msg}`;
+}
 
+function copyResults() {
+    const text = document.getElementById("messagetext").innerText;
+
+    navigator.clipboard.writeText(text)
+        .then(() => {
+            alert("Results copied to clipboard!");
+        })
+        .catch(err => {
+            console.error("Copy failed", err);
+        });
 }
