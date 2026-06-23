@@ -6,25 +6,95 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Shoe Inventory Search</title>
   <link rel="stylesheet" href="style.css">
-  <script src="script.js"></script>
+  
 </head>
 <body>
 <!-- NEW PROJECT -->
  
-<!-- The Selector Dropdown at the top 
+<!-- The Selector Dropdown at the top -->
 <div class="selector-container">
-  <label for="page-chooser">Choose figures: </label>
-  <select id="page-chooser">
+  <label for="pagechooser">Choose figures: </label>
+  <select id="pagechooser">
     <option value="daily">Daily Figures</option>
     <option value="closing">Closing Figures</option>
   </select>
-</div> -->
+</div> 
 
 
-
-  <div>
+<div id="dailyfigures" class="section">
+  
   <div class="container">
-    <h1>Figures</h1>
+    <h1>Daily Figures</h1>
+
+
+    <div class="input-row">
+        <label>Day Of The Month:</label>
+        <input type="number" id="day" placeholder="Enter day">
+    </div>
+
+    <div class="input-row">
+        <label>Time:</label>
+        <input type="text" id="time" placeholder="Enter time">
+    </div>
+
+    <div class="input-row">
+        <label>Actual Sales:</label>
+        <input type="number" id="sales" placeholder="Enter sales">
+    </div>
+
+    <div class="input-row">
+        <label>Target:</label>
+        <input type="number" id="target" placeholder="Enter today's target">
+    </div>
+
+    <div class="input-row">
+        <label>Transactions:</label>
+        <input type="number" id="transactions" placeholder="Enter transactions">
+    </div>
+
+    <div class="input-row">
+        <label>Units Sold:</label>
+        <input type="number" id="units" placeholder="Enter units sold">
+    </div>
+
+    <div class="input-row">
+        <label>Foot Traffic:</label>
+        <input type="number" id="traffic" placeholder="Enter foot traffic">
+    </div>
+
+    <div class="input-row">
+        <label>AVT:</label>
+        <input type="number" id="avt" placeholder="Enter AVT">
+    </div>
+
+    <div class="input-row">
+        <label>UPT:</label>
+        <input type="number" id="upt" placeholder="Enter UPT">
+    </div>
+
+    <button onclick="calculateDaily()">Submit</button> 
+
+    <!--MESSAGE-->
+<div>
+  <div class="container">
+    <h2>Message</h2>
+    <p id="dailymessagetext"></p>
+  </div>
+  <button onclick="copyDailyResults()">Copy</button>
+</div>
+
+</div> 
+
+
+
+
+
+</div>
+
+<div id="closingfigures" class="section hidden">
+  
+  <div class="container">
+    <h1>Closing Figures</h1>
 
     <div class="input-row">
         <label>Day Of The Month:</label>
@@ -76,10 +146,10 @@
         <input type="number" id="mtdstarget" placeholder="Enter MTD target">
     </div>
 
-    <button onclick="calculateAndShow()">Submit</button>
+    <button onclick="calculateClosing()">Submit</button>
 </div>
 
-</div>
+
 
 <!--MESSAGE-->
 <div>
@@ -87,9 +157,11 @@
     <h2>Message</h2>
     <p id="messagetext"></p>
   </div>
-  <button onclick="copyResults()">Copy</button>
+  <button onclick="copyClosingResults()">Copy</button>
 </div>
 
+</div>
 
+<script src="script.js"></script>
 </body>
 </html>

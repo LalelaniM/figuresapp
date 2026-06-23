@@ -62,6 +62,20 @@ body {
     }
 }
 
+select,
+        input {
+            padding: 8px;
+            font-size: 16px;
+            margin-top: 10px;
+        }
+
+        .section {
+            margin-top: 20px;
+        }
+
+        .hidden {
+            display: none;
+        }
 input, button {
     font-size: 16px;
     padding: 12px;
@@ -100,6 +114,20 @@ button:hover {
 button:active {
     transform: translateY(1px);
     box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+
+.selector-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 20px;
+    gap: 8px;
+}
+
+
+#pagechooser {
+    padding: 8px 16px;
+    font-size: 16px;
 }
 
 
