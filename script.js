@@ -146,7 +146,7 @@ function copyClosingResults() {
         });
 }
 
-function copyDialyResults() {
+function copyDailyResults() {
     const text = document.getElementById("dailymessagetext").innerText;
 
     navigator.clipboard.writeText(text)
